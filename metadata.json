@@ -1,0 +1,14 @@
+{
+  "name": "linuxit-lightstreamer",
+  "version": "0.1.0",
+  "author": "Sam Pearson <sam.pearson@linuxit.com>",
+  "summary": "Install and Configure Lightstreamer",
+  "license": "GNU GPL v2",
+  "source": "https://github.com/linuxit/linuxit-lightstreamer",
+  "project_page": "https://github.com/linuxit/linuxit-lightstreamer",
+  "issues_url": "https://github.com/linuxit/linuxit-lightstreamer/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
