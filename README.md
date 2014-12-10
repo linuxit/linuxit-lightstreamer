@@ -15,19 +15,13 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+The Module is intended to install and perform basic management of Lightstreamer.
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+Given a valid package that you'll need to provide, this module will install 
+Lighstreamer and allow some control over an init script and basic configuration
+files.
 
 ## Setup
 
@@ -40,21 +34,30 @@ management, etc.) this is the time to mention it.
 
 ### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+You'll need to obtain and package lightstreamer into an RPM, then put it in an
+accessible repository.
 
 ### Beginning with lightstreamer
 
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+class { '::lightstreamer': }
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+Change your default installation direcory and set up some sensible passwords:
+
+class { '::lightstreamer':
+  install_dir => '/srv/lightstreamer',
+  mon_user    => 'mon',
+  mon_passwd  => '53cr3t',
+  rmi_user    => 'rmi',
+  rmi_passwd  => 'B1g53cr3t',
+}
+
+Change default Java path:
+
+class { '::lightstreamer':
+  java_home => '/opt/java/latest',
+}
 
 ## Reference
 
@@ -65,15 +68,12 @@ with things. (We are working on automating this section!)
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+Currently only tested on EL 6 type operating systems.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+Pull requests gladly reviewed.
 
-## Release Notes/Contributors/Etc **Optional**
+## Release Notes
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+0.1.0 - Initial version
